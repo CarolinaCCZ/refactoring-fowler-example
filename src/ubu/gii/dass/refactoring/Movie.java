@@ -50,4 +50,34 @@ public class Movie extends MovieType {
 	public int getTypeCode() {
 		return this._movieType.getTypeCode();
 	}
+
+	public int getFrequentRentalPoints(Rental rental) {
+		int frequentRenterPoints = 0;
+		frequentRenterPoints ++;
+		// add bonus for a two day new release rental
+		if ((rental.getMovie().getPriceCode() == MovieType.NEW_RELEASE)
+				&& rental.getDaysRented() > 1)
+			frequentRenterPoints++;
+		return frequentRenterPoints;
+	}
+
+	public double getCharge(Rental rental) {
+		double result = 0;
+		switch (rental.getMovie().getPriceCode()) {
+		case MovieType.REGULAR:
+			result += 2;
+			if (rental.getDaysRented() > 2)
+				result += (rental.getDaysRented() - 2) * 1.5;
+			break;
+		case MovieType.NEW_RELEASE:
+			result += rental.getDaysRented() * 3;
+			break;
+		case MovieType.CHILDRENS:
+			result += 1.5;
+			if (rental.getDaysRented() > 3)
+				result += (rental.getDaysRented() - 3) * 1.5;
+			break;
+		}
+		return result;
+	}
 }
