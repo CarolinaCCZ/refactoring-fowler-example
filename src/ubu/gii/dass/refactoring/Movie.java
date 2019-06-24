@@ -31,4 +31,16 @@ public class Movie extends MovieType {
 	public String getTitle() {
 		return _title;
 	}
+
+	@Override
+	public int getMovieType() {
+		// TODO Apéndice de método generado automáticamente
+		return 0;
+	}
+
+	@Override
+	public void setMovieType(int type) {
+		// TODO Apéndice de método generado automáticamente
+		
+	}
 }
