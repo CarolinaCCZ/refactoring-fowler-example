@@ -11,7 +11,7 @@ package ubu.gii.dass.refactoring;
  * 
  */
 public class Rental {
-	Movie _movie;
+	private Movie _movie;
 	private int _daysRented;
 
 	public Rental(Movie movie, int daysRented) {
@@ -23,7 +23,15 @@ public class Rental {
 	}
 
 	public Movie getMovie() {
+		return get_movie();
+	}
+
+	Movie get_movie() {
 		return _movie;
+	}
+
+	void set_movie(Movie _movie) {
+		this._movie = _movie;
 	}
 
 	}
